@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - Compra y Vende</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="#" onclick="main.renderHomePage()">🛍️ TiendaOnline</a>
+        </div>
+
+        <ul class="navbar-menu">
+            <li><a href="#" onclick="main.renderHomePage()">Inicio</a></li>
+            <li><a href="#" onclick="main.renderCart()">Carrito <span id="cartCount" class="cart-badge">0</span></a></li>
+            <li id="authLinks">
+                <a href="#" onclick="auth.showLoginModal()">Iniciar Sesión</a>
+                <a href="#" onclick="auth.showRegisterModal()">Registrarse</a>
+            </li>
+            <li id="userMenu" class="user-menu" style="display: none;">
+                <span id="userNameDisplay">Usuario</span>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="main.renderDashboard()">Dashboard</a>
+                    <a href="#" onclick="auth.logout()">Cerrar Sesión</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="Utils.hideModal('authModal')">&times;</span>
+            <div class="modal-title"></div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Initialize app when DOM is loaded -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            main.init();
+        });
+    </script>
+</body>
+</html>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

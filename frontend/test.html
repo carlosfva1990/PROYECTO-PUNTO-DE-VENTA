@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Frontend - Tienda Online</title>
+</head>
+<body>
+    <h1>Test de Carga de JavaScript</h1>
+    <div id="testResults"></div>
+
+    <!-- Load all JavaScript files -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Test script to verify all modules loaded correctly
+        document.addEventListener('DOMContentLoaded', function() {
+            const results = document.getElementById('testResults');
+            let output = '<h2>Resultados del Test:</h2><ul>';
+
+            // Test CONFIG
+            try {
+                if (typeof CONFIG !== 'undefined' && CONFIG.API_BASE_URL) {
+                    output += '<li style="color: green;">✅ CONFIG cargado correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ CONFIG no cargado</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en CONFIG: ' + e.message + '</li>';
+            }
+
+            // Test Utils
+            try {
+                if (typeof Utils !== 'undefined' && Utils.formatPrice) {
+                    output += '<li style="color: green;">✅ Utils cargado correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ Utils no cargado</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en Utils: ' + e.message + '</li>';
+            }
+
+            // Test API
+            try {
+                if (typeof api !== 'undefined' && api.request) {
+                    output += '<li style="color: green;">✅ API cargado correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ API no cargado</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en API: ' + e.message + '</li>';
+            }
+
+            // Test Auth
+            try {
+                if (typeof auth !== 'undefined' && auth.login) {
+                    output += '<li style="color: green;">✅ Auth cargado correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ Auth no cargado</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en Auth: ' + e.message + '</li>';
+            }
+
+            // Test Cart
+            try {
+                if (typeof cart !== 'undefined' && cart.addToCart) {
+                    output += '<li style="color: green;">✅ Cart cargado correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ Cart no cargado</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en Cart: ' + e.message + '</li>';
+            }
+
+            // Test Main
+            try {
+                if (typeof main !== 'undefined' && main.init) {
+                    output += '<li style="color: green;">✅ Main cargado correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ Main no cargado</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en Main: ' + e.message + '</li>';
+            }
+
+            output += '</ul>';
+
+            // Test some utility functions
+            output += '<h3>Test de Funciones de Utilidad:</h3><ul>';
+
+            try {
+                const price = Utils.formatPrice(123.45);
+                if (price === '$123.45') {
+                    output += '<li style="color: green;">✅ formatPrice funciona correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ formatPrice no funciona: ' + price + '</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en formatPrice: ' + e.message + '</li>';
+            }
+
+            try {
+                const emailValid = Utils.validateEmail('test@example.com');
+                const emailInvalid = Utils.validateEmail('invalid-email');
+                if (emailValid && !emailInvalid) {
+                    output += '<li style="color: green;">✅ validateEmail funciona correctamente</li>';
+                } else {
+                    output += '<li style="color: red;">❌ validateEmail no funciona</li>';
+                }
+            } catch (e) {
+                output += '<li style="color: red;">❌ Error en validateEmail: ' + e.message + '</li>';
+            }
+
+            output += '</ul>';
+
+            results.innerHTML = output;
+        });
+    </script>
+</body>
+</html>

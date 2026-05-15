@@ -1,0 +1,78 @@
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  
+  application:
+    name: tienda-online-dev
+  
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/tienda_online
+  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+    
+app:
+  jwtSecret: mySecretKeyForJwtTokenGenerationInTiendaOnlineApplicationThatIsVeryLongAndSecure
+  jwtExpirationInMs: 86400000
+
+logging:
+  level:
+    root: INFO
+    com.tienda: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  
+  application:
+    name: tienda-online-prod
+  
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/tienda_online}
+  
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    min-response-size: 1024
+    
+app:
+  jwtSecret: ${JWT_SECRET:defaultSecretChangeThisInProduction}
+  jwtExpirationInMs: ${JWT_EXPIRATION_MS:86400000}
+
+logging:
+  level:
+    root: WARN
+    com.tienda: INFO
+  file:
+    name: logs/tienda-online.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
