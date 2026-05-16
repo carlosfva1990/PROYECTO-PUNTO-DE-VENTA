@@ -9,7 +9,7 @@ import com.tienda.service.AuthService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.MockBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -32,27 +32,25 @@ public class AuthControllerTest {
     @Test
     public void testRegister() throws Exception {
         // Arrange
-        UserRegistrationDTO registrationDTO = UserRegistrationDTO.builder()
-                .email("test@example.com")
-                .password("password123")
-                .firstName("Test")
-                .lastName("User")
-                .phone("+34123456789")
-                .address("Calle Test 1")
-                .city("Madrid")
-                .country("España")
-                .zipCode("28001")
-                .role(UserRole.BUYER)
-                .build();
+        UserRegistrationDTO registrationDTO = new UserRegistrationDTO();
+        registrationDTO.setEmail("test@example.com");
+        registrationDTO.setPassword("password123");
+        registrationDTO.setFirstName("Test");
+        registrationDTO.setLastName("User");
+        registrationDTO.setPhone("+34123456789");
+        registrationDTO.setAddress("Calle Test 1");
+        registrationDTO.setCity("Madrid");
+        registrationDTO.setCountry("España");
+        registrationDTO.setZipCode("28001");
+        registrationDTO.setRole(UserRole.BUYER);
         
-        LoginResponseDTO responseDTO = LoginResponseDTO.builder()
-                .token("jwt-token-here")
-                .userId("user-123")
-                .email("test@example.com")
-                .firstName("Test")
-                .lastName("User")
-                .role(UserRole.BUYER)
-                .build();
+        LoginResponseDTO responseDTO = new LoginResponseDTO();
+        responseDTO.setToken("jwt-token-here");
+        responseDTO.setUserId("user-123");
+        responseDTO.setEmail("test@example.com");
+        responseDTO.setFirstName("Test");
+        responseDTO.setLastName("User");
+        responseDTO.setRole(UserRole.BUYER);
         
         when(authService.register(any(UserRegistrationDTO.class))).thenReturn(responseDTO);
         
@@ -72,19 +70,17 @@ public class AuthControllerTest {
     @Test
     public void testLogin() throws Exception {
         // Arrange
-        LoginRequestDTO loginRequest = LoginRequestDTO.builder()
-                .email("test@example.com")
-                .password("password123")
-                .build();
+        LoginRequestDTO loginRequest = new LoginRequestDTO();
+        loginRequest.setEmail("test@example.com");
+        loginRequest.setPassword("password123");
         
-        LoginResponseDTO responseDTO = LoginResponseDTO.builder()
-                .token("jwt-token-here")
-                .userId("user-123")
-                .email("test@example.com")
-                .firstName("Test")
-                .lastName("User")
-                .role(UserRole.BUYER)
-                .build();
+        LoginResponseDTO responseDTO = new LoginResponseDTO();
+        responseDTO.setToken("jwt-token-here");
+        responseDTO.setUserId("user-123");
+        responseDTO.setEmail("test@example.com");
+        responseDTO.setFirstName("Test");
+        responseDTO.setLastName("User");
+        responseDTO.setRole(UserRole.BUYER);
         
         when(authService.login(any(LoginRequestDTO.class))).thenReturn(responseDTO);
         

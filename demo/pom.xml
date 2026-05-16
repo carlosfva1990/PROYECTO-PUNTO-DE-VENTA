@@ -7,6 +7,8 @@
           <groupId>com.tienda</groupId>
           <artifactId>tienda-online</artifactId>
           <version>1.0.0</version>
+            <!-- Ensure Maven resolves the parent from the local filesystem if it's a multi-module build -->
+            <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.tienda</groupId>
@@ -14,8 +16,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.release.source>21</maven.release.source>
-        <maven.release.target>21</maven.release.target>
+        <!-- Use standard compiler properties and java.version for tooling and plugins -->
+        <java.version>21</java.version>
+        <maven.compiler.release>21</maven.compiler.release>
+        <!-- Override Spring Boot version to a supported, newer minor release -->
+        <spring-boot.version>3.5.14</spring-boot.version>
     </properties>
 
 </project>

@@ -1,6 +1,6 @@
 # Tienda Online - Plataforma de E-commerce
 
-Una plataforma completa de tienda online construida con **Spring Boot 3.2**, **Java 17** y **MongoDB**, que permite a vendedores subir productos, a compradores hacer compras y a administradores monitorear todas las transacciones.
+Una plataforma completa de tienda online construida con **Spring Boot 3.5**, **Java 21** y **MongoDB**, que permite a vendedores subir productos, a compradores hacer compras y a administradores monitorear todas las transacciones.
 
 ## 🎯 Características principales
 
