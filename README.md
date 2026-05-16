@@ -20,7 +20,7 @@ Una plataforma completa de tienda online construida con **Spring Boot 3.2**, **J
 
 ## 🛠️ Requisitos previos
 
-- Java 17 o superior
+- Java 21 o superior
 - Maven 3.8.0 o superior
 - MongoDB 4.4 o superior
 - Git
