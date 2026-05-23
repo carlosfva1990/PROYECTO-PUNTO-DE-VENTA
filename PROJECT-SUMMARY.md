@@ -242,7 +242,7 @@ PUT    /api/admin/orders/{id}/status - Cambiar estado
 ## 🛠️ Dependencias Principales
 
 ```xml
-Spring Boot 3.2.0
+Spring Boot 3.5.14
 - Web (REST APIs)
 - Data MongoDB
 - Security (JWT)

@@ -7,8 +7,6 @@
           <groupId>com.tienda</groupId>
           <artifactId>tienda-online</artifactId>
           <version>1.0.0</version>
-            <!-- Ensure Maven resolves the parent from the local filesystem if it's a multi-module build -->
-            <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.tienda</groupId>
@@ -38,6 +36,7 @@
             <optional>true</optional>
         </dependency>
 
+        
     </dependencies>
 
 
@@ -53,7 +52,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.30</version> <!-- Explicit version still good practice, or rely on management -->
+                            <version>1.18.36</version> <!-- Explicit version still good practice, or rely on management -->
                         </path>
                         <!-- Other processors -->
                     </annotationProcessorPaths>
