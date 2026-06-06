@@ -17,7 +17,8 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
-    <!-- <module>demo</module> -->
+        <module>core</module>
+        <module>demo</module>
     </modules>
     <name>Tienda Online</name>
     <description>Plataforma de tienda online con Spring Boot y MongoDB</description>

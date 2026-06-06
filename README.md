@@ -29,8 +29,8 @@ Una plataforma completa de tienda online construida con **Spring Boot 3.5**, **J
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <repositorio-url>
-cd poyecto-Punto-De-Venta
+git clone https://github.com/carlosfva1990/PROYECTO-PUNTO-DE-VENTA.git
+cd PROYECTO-PUNTO-DE-VENTE
 ```
 
 ### 2. Instalar MongoDB
@@ -64,12 +64,34 @@ spring:
 
 ### 4. Compilar y ejecutar
 
+Opciones para ejecutar la aplicación (backend):
+
+- Opción A — Desarrollo rápido (usando Maven, requiere Java 21 instalado):
+
 ```bash
-mvn clean install
-mvn spring-boot:run
+# Desde la raíz del repo (ejecuta solo el módulo `core`)
+mvn -pl core -am spring-boot:run
 ```
 
-La aplicación estará disponible en: `http://localhost:8080/api`
+- Opción B — Empaquetar y ejecutar el JAR:
+
+```bash
+# Empaqueta el módulo core
+cd core
+mvn clean package -DskipTests
+# Ejecuta el JAR generado
+java -jar target/tienda-core-1.0.0.jar
+```
+
+- Opción C — Usando Docker Compose para la base de datos (recomendado para reproducibilidad):
+
+```bash
+# Levanta MongoDB y mongo-express
+docker compose up -d
+# Luego ejecutar el backend con Maven o con el JAR como en las opciones anteriores
+```
+
+La API estará disponible en: `http://localhost:8080/api` (o en el puerto que configures en `application.yml`)
 
 ## 📡 Endpoints API
 
