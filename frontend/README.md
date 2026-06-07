@@ -57,12 +57,29 @@ const CONFIG = {
 };
 ```
 
+Nota: el backend define `server.servlet.context-path: /` en `src/main/resources/application.yml` y los controladores usan `@RequestMapping("/api/...")`. Por eso la URL base correcta es `http://localhost:8080/api` y no `http://localhost:8080/api/api`.
+
 ### 2. Ejecutar la Aplicación
 
 #### Opción A: Con Backend Completo (Recomendado)
 1. **Inicia el backend** (Spring Boot + MongoDB)
 2. **Abre `index.html`** en un navegador web
 3. La aplicación funcionará completamente
+
+### Servir el frontend localmente
+Para desarrollo es conveniente servir los archivos estáticos con un servidor simple:
+
+```bash
+# Desde la carpeta frontend
+cd frontend
+# Opción 1: Python (rápido, sin dependencias extra)
+python3 -m http.server 3000 --bind 127.0.0.1
+# Opción 2: usando `serve` (npm) para rutas limpias
+npm install -g serve
+serve -s . -l 3000
+```
+
+Abre `http://localhost:3000` en tu navegador.
 
 #### Opción B: Solo Frontend (Para Desarrollo)
 1. **Abre `test.html`** en un navegador para verificar que los archivos JS cargan correctamente

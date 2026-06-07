@@ -1,6 +1,6 @@
 # Tienda Online - Plataforma de E-commerce
 
-Una plataforma completa de tienda online construida con **Spring Boot 3.2**, **Java 17** y **MongoDB**, que permite a vendedores subir productos, a compradores hacer compras y a administradores monitorear todas las transacciones.
+Una plataforma completa de tienda online construida con **Spring Boot 3.5**, **Java 21** y **MongoDB**, que permite a vendedores subir productos, a compradores hacer compras y a administradores monitorear todas las transacciones.
 
 ## 🎯 Características principales
 
@@ -20,7 +20,7 @@ Una plataforma completa de tienda online construida con **Spring Boot 3.2**, **J
 
 ## 🛠️ Requisitos previos
 
-- Java 17 o superior
+- Java 21 o superior
 - Maven 3.8.0 o superior
 - MongoDB 4.4 o superior
 - Git
@@ -29,8 +29,8 @@ Una plataforma completa de tienda online construida con **Spring Boot 3.2**, **J
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <repositorio-url>
-cd poyecto-Punto-De-Venta
+git clone https://github.com/carlosfva1990/PROYECTO-PUNTO-DE-VENTA.git
+cd PROYECTO-PUNTO-DE-VENTE
 ```
 
 ### 2. Instalar MongoDB
@@ -62,14 +62,38 @@ spring:
       uri: mongodb://localhost:27017/tienda_online
 ```
 
+Nota: `application.yml` define `server.servlet.context-path` en `/` y los controladores REST usan el prefijo `@RequestMapping("/api/...")`. Por tanto los endpoints quedan expuestos en `http://localhost:8080/api/...` (evita `.../api/api`).
+
 ### 4. Compilar y ejecutar
 
+Opciones para ejecutar la aplicación (backend):
+
+- Opción A — Desarrollo rápido (usando Maven, requiere Java 21 instalado):
+
 ```bash
-mvn clean install
-mvn spring-boot:run
+# Desde la raíz del repo (ejecuta solo el módulo `core`)
+mvn -pl core -am spring-boot:run
 ```
 
-La aplicación estará disponible en: `http://localhost:8080/api`
+- Opción B — Empaquetar y ejecutar el JAR:
+
+```bash
+# Empaqueta el módulo core
+cd core
+mvn clean package -DskipTests
+# Ejecuta el JAR generado
+java -jar target/tienda-core-1.0.0.jar
+```
+
+- Opción C — Usando Docker Compose para la base de datos (recomendado para reproducibilidad):
+
+```bash
+# Levanta MongoDB y mongo-express
+docker compose up -d
+# Luego ejecutar el backend con Maven o con el JAR como en las opciones anteriores
+```
+
+La API estará disponible en: `http://localhost:8080/api` (o en el puerto que configures en `application.yml`)
 
 ## 📡 Endpoints API
 

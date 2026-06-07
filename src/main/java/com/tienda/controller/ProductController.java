@@ -1,15 +1,13 @@
 package com.tienda.controller;
 
-import com.tienda.dto.CreateProductDTO;
 import com.tienda.dto.ProductDTO;
-import com.tienda.security.CustomUserDetails;
 import com.tienda.service.ProductService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -19,7 +17,7 @@ import java.util.List;
 public class ProductController {
     
     private final ProductService productService;
-    
+
     @GetMapping
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
         List<ProductDTO> products = productService.getAllProducts();

@@ -89,6 +89,7 @@ La aplicación estará lista cuando veas:
 ```
 ... : Tienda Online started in X.XXX seconds (process running for X.XXX)
 ```
+Nota: `src/main/resources/application.yml` configura `server.servlet.context-path: /` y los controladores REST usan el prefijo `@RequestMapping("/api/...")`. Por tanto los endpoints expuestos son `http://localhost:8080/api/...` (no `.../api/api`).
 
 Acceso:
 - API REST: `http://localhost:8080/api`
