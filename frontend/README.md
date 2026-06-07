@@ -57,6 +57,8 @@ const CONFIG = {
 };
 ```
 
+Nota: el backend define `server.servlet.context-path: /` en `src/main/resources/application.yml` y los controladores usan `@RequestMapping("/api/...")`. Por eso la URL base correcta es `http://localhost:8080/api` y no `http://localhost:8080/api/api`.
+
 ### 2. Ejecutar la Aplicación
 
 #### Opción A: Con Backend Completo (Recomendado)

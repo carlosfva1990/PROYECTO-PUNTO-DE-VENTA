@@ -62,6 +62,8 @@ spring:
       uri: mongodb://localhost:27017/tienda_online
 ```
 
+Nota: `application.yml` define `server.servlet.context-path` en `/` y los controladores REST usan el prefijo `@RequestMapping("/api/...")`. Por tanto los endpoints quedan expuestos en `http://localhost:8080/api/...` (evita `.../api/api`).
+
 ### 4. Compilar y ejecutar
 
 Opciones para ejecutar la aplicación (backend):
