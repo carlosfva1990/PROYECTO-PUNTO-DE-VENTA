@@ -15,11 +15,8 @@
     <groupId>com.tienda</groupId>
     <artifactId>tienda-online</artifactId>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>core</module>
-        <module>demo</module>
-    </modules>
+    <packaging>jar</packaging>
+
     <name>Tienda Online</name>
     <description>Plataforma de tienda online con Spring Boot y MongoDB</description>
 
@@ -31,11 +28,6 @@
 
     <dependencies>
         <!-- Spring Boot Starters -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -57,10 +49,10 @@
             <artifactId>jjwt-api</artifactId>
             <version>0.12.3</version>
         </dependency>
-        <dependency>
+         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>0.12.3</version>
+            <version>0.12.6</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -96,13 +88,6 @@
         </dependency>
 
         <!-- Development -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -114,6 +99,15 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 

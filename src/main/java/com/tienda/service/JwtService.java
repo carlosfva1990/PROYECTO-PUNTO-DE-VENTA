@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.crypto.SecretKey;
 
+import static io.jsonwebtoken.Jwts.*;
+
 @Service
 public class JwtService {
     
@@ -31,7 +33,7 @@ public class JwtService {
     }
     
     private String createToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder()
+        return builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date())
@@ -58,10 +60,10 @@ public class JwtService {
     
     public Boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder()
-                    .setSigningKey(getSigningKey())
+            Jwts.parser()
+                    .verifyWith(getSigningKey())
                     .build()
-                    .parseClaimsJws(token);
+                    .parseSignedClaims(token);
             return !isTokenExpired(token);
         } catch (Exception e) {
             return false;
@@ -69,10 +71,10 @@ public class JwtService {
     }
     
     private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
+        return Jwts.parser()
+                .verifyWith(getSigningKey())
                 .build()
-                .parseClaimsJws(token)
-                .getBody();
+                .parseSignedClaims(token)
+                .getPayload();
     }
 }

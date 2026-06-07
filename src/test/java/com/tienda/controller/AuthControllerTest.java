@@ -9,8 +9,10 @@ import com.tienda.service.AuthService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.*;
@@ -18,6 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(AuthController.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class AuthControllerTest {
     
     @Autowired
@@ -26,6 +29,12 @@ public class AuthControllerTest {
     @MockBean
     private AuthService authService;
     
+    @MockBean
+    private com.tienda.service.JwtService jwtService;
+
+    @MockBean
+    private com.tienda.repository.UserRepository userRepository;
+
     @Autowired
     private ObjectMapper objectMapper;
     
